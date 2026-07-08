@@ -23,6 +23,14 @@ export async function fetchPolicies(date) {
 }
 
 /**
+ * Fetches all policy holders.
+ */
+export async function fetchAllPolicies() {
+  const res = await axios.get(`${API_BASE}/all`);
+  return res.data;
+}
+
+/**
  * Creates a new policy.
  * @param {object} policyData
  */

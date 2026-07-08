@@ -2,13 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { format } from 'date-fns';
 import Dashboard from './components/Dashboard';
 import AddPolicyModal from './components/AddPolicyModal';
+import AllPoliciesView from './components/AllPoliciesView';
 import { fetchPolicies, fetchPayments, toUTCDateString } from './api';
 import './index.css';
 
 // ─── App Header ─────────────────────────────────────────────────────────────
-function AppHeader() {
+function AppHeader({ isAllView, onToggleAll }) {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 glass-header text-white shadow-md flex items-center px-4 pt-4 pb-4">
+    <header className="fixed top-0 left-0 w-full z-50 glass-header text-white shadow-md flex items-center justify-between px-4 pt-4 pb-4">
       <div className="flex items-center gap-3">
         <div className="p-2 bg-white/10 rounded-xl">
           <span className="material-symbols-outlined text-white text-[22px]">shield</span>
@@ -18,6 +19,16 @@ function AppHeader() {
           <p className="text-[12px] text-white/70 leading-none font-medium">Daily Payment Tracker</p>
         </div>
       </div>
+      <button 
+        id="btn-all-policies"
+        onClick={onToggleAll}
+        title="View All Policy Holders"
+        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+          isAllView ? 'bg-white text-[var(--color-primary)] shadow-md' : 'bg-white/20 text-white hover:bg-white/30'
+        }`}
+      >
+        <span className="material-symbols-outlined text-[24px]">group</span>
+      </button>
     </header>
   );
 }
@@ -36,6 +47,7 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [payments, setPayments] = useState([]);
   const [paymentsLoading, setPaymentsLoading] = useState(true);
+  const [isAllView, setIsAllView] = useState(false);
 
   const loadData = useCallback(async (date) => {
     setLoading(true);
@@ -90,7 +102,7 @@ export default function App() {
 
   return (
     <div className="min-h-dvh flex flex-col bg-[var(--color-background)]">
-      <AppHeader />
+      <AppHeader isAllView={isAllView} onToggleAll={() => setIsAllView(!isAllView)} />
 
       {/* Error Banner */}
       {error && (
@@ -105,16 +117,22 @@ export default function App() {
 
       {/* Main content — padded for fixed header */}
       <main className="flex-1 flex flex-col pt-[72px] pb-4">
-        <Dashboard
-          selectedDate={selectedDate}
-          onDateChange={handleDateChange}
-          policies={policies}
-          loading={loading}
-          onRemovePolicy={handleRemovePolicy}
-          onPolicyDone={handlePolicyDone}
-          payments={payments}
-          paymentsLoading={paymentsLoading}
-        />
+        {isAllView ? (
+          <div className="flex-1 overflow-y-auto px-4 py-4 pb-20">
+            <AllPoliciesView />
+          </div>
+        ) : (
+          <Dashboard
+            selectedDate={selectedDate}
+            onDateChange={handleDateChange}
+            policies={policies}
+            loading={loading}
+            onRemovePolicy={handleRemovePolicy}
+            onPolicyDone={handlePolicyDone}
+            payments={payments}
+            paymentsLoading={paymentsLoading}
+          />
+        )}
       </main>
 
       {/* FAB */}

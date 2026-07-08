@@ -3,6 +3,16 @@ const router = express.Router();
 const Policy = require('../models/Policy');
 const Payment = require('../models/Payment');
 
+// GET /api/policies/all - Fetch all policy holders
+router.get('/all', async (req, res) => {
+  try {
+    const policies = await Policy.find({}).sort({ name: 1 });
+    res.json(policies);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // GET /api/policies - Fetch pending policies for a specific date
 router.get('/', async (req, res) => {
   try {
