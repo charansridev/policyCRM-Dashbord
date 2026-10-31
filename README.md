@@ -1,7 +1,6 @@
 # 🛡️ PolicyPay CRM – Mobile-First Life Insurance Daily Payment Tracker
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen?style=for-the-badge&logo=vercel)](https://policycrm-dashbord.vercel.app/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](https://github.com/charansridev/policyCRM-Dashbord/pulls)
 
 A mobile-first, open-source, full-stack CRM built specifically to solve daily workflow pain points for life insurance agents on the move. Track customer policy payments daily, send WhatsApp reminders with one click directly from your phone, handle monthly/yearly recurring renewals, forward deferred payments, and view real-time payment collection statistics on any device.
@@ -203,13 +202,6 @@ Contributions make the open-source community an amazing place to learn, inspire,
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
 
 ## 👨‍💻 Maintainer & Acknowledgments
 
