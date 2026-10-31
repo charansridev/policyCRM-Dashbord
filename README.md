@@ -1,10 +1,10 @@
-# 🛡️ PolicyPay CRM – Life Insurance Daily Payment Tracker
+# 🛡️ PolicyPay CRM – Mobile-First Life Insurance Daily Payment Tracker
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen?style=for-the-badge&logo=vercel)](https://policy-crm-dashbord-hazel.vercel.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](https://github.com/charansridev/policyCRM-Dashbord/pulls)
 
-An open-source, full-stack CRM built specifically to solve daily workflow pain points for life insurance agents. Track customer policy payments daily, send WhatsApp reminders with one click, handle monthly/yearly recurring renewals, forward deferred payments, and view real-time payment collection statistics.
+A mobile-first, open-source, full-stack CRM built specifically to solve daily workflow pain points for life insurance agents on the move. Track customer policy payments daily, send WhatsApp reminders with one click directly from your phone, handle monthly/yearly recurring renewals, forward deferred payments, and view real-time payment collection statistics on any device.
 
 🚀 **[View Live Demo](https://policy-crm-dashbord-hazel.vercel.app/)**
 
@@ -12,26 +12,27 @@ An open-source, full-stack CRM built specifically to solve daily workflow pain p
 
 ## 📌 Problem Statement & Mission
 
-Life insurance agents handle dozens of active policies every month. Traditional spreadsheets or generic CRM tools often lack quick daily tracking, making it hard to:
-1. **Track Due Payments Daily**: Missing premium renewal dates leads to policy lapse for clients and lost commission for agents.
+Life insurance agents spend most of their working day in the field, meeting clients and managing policies directly from their mobile devices. Traditional spreadsheets or generic desktop CRM tools are cumbersome on phones and lack quick daily tracking, making it hard to:
+1. **Track Due Payments Daily on Mobile**: Missing premium renewal dates leads to policy lapse for clients and lost commission for agents.
 2. **Follow Up Effortlessly**: Agents lose time copying numbers, typing standard messages, and manually texting clients on WhatsApp.
 3. **Handle Recurring vs. Deferred Payments**: Monthly or annual premium renewals require constant date adjustments and renewal tracking.
 4. **Collect Quick Metrics**: Knowing daily total collected amounts and pending collections at a glance is vital for field management.
 
-**PolicyPay CRM** provides an open-source, streamlined, agent-focused dashboard designed to make daily premium tracking fast, visual, and hassle-free.
+**PolicyPay CRM** provides a **mobile-first**, agent-focused dashboard designed to make daily premium tracking fast, visual, and frictionless on smartphones and tablets.
 
 ---
 
 ## ✨ Features
 
+- 📱 **Mobile-First Experience**: Built from the ground up for mobile screens with touch-friendly interactions, responsive cards, and fast on-the-go navigation.
 - 📅 **Daily Due Tracker**: Filter and view policies due on any selected calendar date.
-- 📱 **One-Click WhatsApp Reminders**: Direct integration to launch WhatsApp web/app with pre-filled payment reminder messages.
+- 💬 **One-Click WhatsApp Reminders**: Direct integration to launch WhatsApp with pre-filled payment reminder messages.
 - 🔄 **Smart Recurring Handling**: Automatic rollover for monthly or annual recurring premium renewals when marked as "Done".
 - ⏩ **Forward Due Dates**: Easily defer payment follow-ups to a future date when clients request an extension.
 - 📊 **Real-time Analytics Dashboard**: Instant summary of total collected amount, total pending amount, and payment counts for any selected day.
 - 📜 **Payment History Log**: Complete audit record of past collected payments per date.
 - 👥 **All Policies Directory**: Searchable list of all registered clients and policy records.
-- 🎨 **Modern & Premium UI**: Crafted with React 19, Tailwind CSS v4, Lucide icons, glassmorphism card styling, and dark mode design principles.
+- 🎨 **Modern & Responsive UI**: Crafted with React 19, Tailwind CSS v4, Lucide icons, glassmorphism card styling, and dark mode design principles.
 
 ---
 
@@ -173,6 +174,22 @@ cd policyCRM-Dashbord
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
 | `GET` | `/api/payments?date=YYYY-MM-DD` | Fetch all payments collected on a specific date |
+
+---
+
+## 🚀 Deploying to Vercel
+
+This repository is already configured for full-stack deployment on **Vercel** using the included [`vercel.json`](vercel.json).
+
+### Steps to Deploy:
+
+1. **Push your code to GitHub / GitLab / Bitbucket**.
+2. **Import the repository into Vercel**:
+   - Go to [vercel.com/new](https://vercel.com/new) and select this repository.
+3. **Configure Environment Variables** in the Vercel Project Settings:
+   - `MONGODB_URI`: Your [MongoDB Atlas](https://www.mongodb.com/atlas) connection string (e.g. `mongodb+srv://<username>:<password>@cluster0.mongodb.net/crm_db?retryWrites=true&w=majority`).
+4. **Deploy**:
+   - Vercel automatically builds the Vite frontend and runs the Express API as a serverless backend function routed via `/api/*`.
 
 ---
 
