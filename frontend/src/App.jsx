@@ -7,18 +7,22 @@ import { fetchPolicies, fetchPayments, toUTCDateString } from './api';
 import './index.css';
 
 // ─── App Header ─────────────────────────────────────────────────────────────
-function AppHeader({ isAllView, onToggleAll }) {
+function AppHeader({ isAllView, onToggleAll, onGoHome }) {
   return (
     <header className="fixed top-0 left-0 w-full z-50 glass-header text-white shadow-md flex items-center justify-between px-4 pt-4 pb-4">
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-white/10 rounded-xl">
+      <button
+        onClick={onGoHome}
+        className="flex items-center gap-3 text-left focus:outline-none group active:scale-95 transition-transform cursor-pointer"
+        aria-label="Go to Home Dashboard"
+      >
+        <div className="p-2 bg-white/10 group-hover:bg-white/20 rounded-xl transition-colors">
           <span className="material-symbols-outlined text-white text-[22px]">shield</span>
         </div>
         <div>
-          <h1 className="text-[20px] font-extrabold tracking-tight leading-tight">PolicyPay CRM</h1>
+          <h1 className="text-[20px] font-extrabold tracking-tight leading-tight group-hover:opacity-95">PolicyPay CRM</h1>
           <p className="text-[12px] text-white/70 leading-none font-medium">Daily Payment Tracker</p>
         </div>
-      </div>
+      </button>
       <button 
         id="btn-all-policies"
         onClick={onToggleAll}
@@ -100,9 +104,20 @@ export default function App() {
     }
   };
 
+  const handleGoHome = () => {
+    setIsAllView(false);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    setSelectedDate(today);
+  };
+
   return (
     <div className="min-h-dvh flex flex-col bg-[var(--color-background)]">
-      <AppHeader isAllView={isAllView} onToggleAll={() => setIsAllView(!isAllView)} />
+      <AppHeader
+        isAllView={isAllView}
+        onToggleAll={() => setIsAllView(!isAllView)}
+        onGoHome={handleGoHome}
+      />
 
       {/* Error Banner */}
       {error && (
